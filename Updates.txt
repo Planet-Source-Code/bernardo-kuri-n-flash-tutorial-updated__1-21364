@@ -1,0 +1,107 @@
+Flash-IN-VB Tutorial v1.2.1
+Tutorial updates README
+23/Jan/2002
+
+Hi!
+
+First of all, thanks to everybody who wrote for the comments and tips. 
+The improvements you see here come directly from your input. Special
+thanks go to Stuart McGougan for helping me out with the WinXP-stuff.
+
+OK... With that aside, here's a brief list of the updates to this
+tutorial. If you want more features, or if you just want to send a
+comment, don't hesitate to send me a quick e-mail or ICQ message or
+whatever.
+
+-----------------------------
+1. 100% Windows XP-compatible
+-----------------------------
+The version before this one didn't work correctly in NT environments,
+since the API for the window-moving function was designed for Win9x.
+After a few tweaks, the code was working fine.
+
+-------------------------------------
+2. Flash right-click menu disabled at last!
+-------------------------------------
+The only way to disable Flash's obnoxious right-click menu (that I 
+know) is to change the "WMode" property of your Flash Control (OCX) 
+instance on your form to "Transparent" (FYI, the default value is 
+"Window"). You can do this using the control's property page, or 
+by simply typing it in the property grid.
+
+After this change, you will lose the "BackColor" property (also known
+as "BGColor") in Flash. to remedy this situation, simply change the
+"BackColor" property on the form containing the control to the desired
+value in VB. That's about it! :)
+
+If you know of a better/faster way to *completely* disable the 
+right-click menu, please let me know. I might implement it on the next
+version.
+
+-------------------------------------------------------
+3. Bundle your SWF file *inside* the executable itself!
+-------------------------------------------------------
+In order to make this work, you may need the Resource Compiler (the 
+file name is "RC.EXE") program, which is normally under the "Wizards" 
+subfolder, under VB's installation folder. If you do not know how to 
+use it, you may still make this work by using the "VB6 Resource Editor" 
+Add-In (Located in the "Add-Ins" menu of the VB6 IDE). I have not 
+tested this using the add-in, although there shouldn't be any problems 
+with it.
+
+OK... Follow these steps:
+
+1. Open your project folder (i.e. "C:\Windows\Desktop\FlashTutorial")
+2. Right-click on the window, and click on "New|Text Document"
+3. Rename the newly-created file to "tutorial.rc" (please note that the
+file HAS TO END WITH AN "RC" extension, or this will NOT work).
+4. Double-click on the new text file, and add this line:
+
+555 SWF tutorial.swf
+
+"555" is just an ID number. You can use whatever number you like, as
+long as it's referenced correctly within VB.
+
+5. Click on "Start|Run...", and locate the "RC.EXE" file on your hard
+disk. after that, type the following at the end of the "Run" dialog:
+
+-r "[FLASHTUTORIAL_FOLDER]\tutorial.swf"
+
+... where "[FLASHTUTORIAL_FOLDER]" stands for the path of the 
+"tutorial.swf" file.
+
+This should make the end text to be something *similar* to the 
+following:
+
+"[RESOURCE_COMPILER_FOLDER]\RC.EXE" -r "[FLASHTUTORIAL_FOLDER]\tutorial.swf"
+
+...where "[RESOURCE_COMPILER_FOLDER]" stands for the path of the
+"RC.EXE" program.
+
+6. Click on "OK" to start the compilation. if everything was done
+correctly, a new RES file, named "tutorial.res", will be created on the
+same path as your "tutorial.rc" file.
+
+7. Now all you need to do is to associate the RES file to your VB
+project. You do this by right-clicking on the Project Explorer, and
+selecting "Add|Add File" on the context menu. After that, just locate
+your "tutorial.res" file, and click "OK" to add it to your project.
+
+8. Copy the code on the "CreateMovie" Sub (located on the main form)
+to your application, remembering to change the name of the "xWin"
+control to the one on your form.
+
+9. After that, you're all set; just run the application, and enjoy!
+
+I hope this helps to make your coding experience more enjoyable. I have
+been building programs in Flash and VB for some time now, and I can
+really say that I haven't had this much fun designing and coding in a
+long time. Hope you do too... :)
+
+Please remember that I can be contacted either using this tutorial's 
+PSC window (that's where you downloaded this program), or either by
+contacting me on bernardokuri@vbmail.net, or by ICQ (my number is 39074717).
+
+Have a good time!
+
+Bernardo Kuri N.
